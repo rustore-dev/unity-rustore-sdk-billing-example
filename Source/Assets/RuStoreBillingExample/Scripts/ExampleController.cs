@@ -67,9 +67,9 @@ namespace RuStore.Example {
                     _loadingIndicator.Hide();
 
                     _products.Clear();
-                    result.products.ForEach(p => _products.Add(p.productId, p));
+                    result.ForEach(p => _products.Add(p.productId, p));
 
-                    UpdateProductsData(result.products);
+                    UpdateProductsData(result);
                     LoadPurchases();
                 });
         }
@@ -101,7 +101,7 @@ namespace RuStore.Example {
                 },
                 onSuccess: (result) => {
                     _loadingIndicator.Hide();
-                    UpdatePurchaseData(result.purchases);
+                    UpdatePurchaseData(result);
                 });
         }
 
@@ -147,7 +147,7 @@ namespace RuStore.Example {
                     _loadingIndicator.Hide();
                     OnError(error);
                 },
-                onSuccess: (result) => {
+                onSuccess: () => {
                     _loadingIndicator.Hide();
                     LoadPurchases();
                 });
